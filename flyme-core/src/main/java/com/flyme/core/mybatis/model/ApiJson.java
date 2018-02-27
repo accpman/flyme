@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 /**
- * Ajax请求返回的JSON对象
+ * Ajax请求返回的对象
  */
 @JsonInclude(Include.NON_NULL)
 public class ApiJson implements Serializable {
