@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flyme.rbac.accountinfo.mapper.AccountInfoMapper">
+    <!--数据表定义 -->
+    <sql id="t_name">t_u_account_info</sql>
+    <sql id="t_alias">t_u_account_info as ai</sql>
+
+    <!--定义外键表 -->
+    <sql id="join">
+        <if test="ew.aliasMap.account != null">
+            <![CDATA[left join t_u_account ${ew.aliasMap.account} on ${ew.aliasMap.account}.accountId = ai.accountInfoId]]>
+        </if>
+    </sql>
+
+    <!-- 自定义分页 -->
+    <select id="pageList" resultType="com.flyme.common.base.EntityMap">
+        select ${ew.sqlSelect} FROM
+        <include refid="t_alias"/>
+        <include refid="join"/>
+        <where>${ew.sqlSegment}</where>
+    </select>
+
+</mapper>

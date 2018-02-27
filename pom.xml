@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.flyme</groupId>
+    <artifactId>flyme-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>flyme</name>
+    <description>flyme框架父工程</description>
+    <!-- 配置远程仓库 -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <name>User Project SNAPSHOTS</name>
+            <url>http://122.114.98.247:7000/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>maven-releases</id>
+            <name>User Project Release</name>
+            <url>http://122.114.98.247:7000/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+    <!-- 继承SpringBoot提供的父工程 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.10.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <!-- 集中定义公用的依赖版本号 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <commons-lang3>3.5</commons-lang3>
+        <guava-version>24.0-jre</guava-version>
+        <java.version>1.8</java.version>
+        <druid-version>1.1.8</druid-version>
+        <flyme-common>0.0.1-SNAPSHOT</flyme-common>
+        <flyme-core>0.0.1-SNAPSHOT</flyme-core>
+    </properties>
+    <!-- 声明子模块 -->
+    <modules>
+        <module>flyme-common</module>
+        <module>flyme-core</module>
+        <module>flyme-module</module>
+        <module>flyme-web</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+    </dependencies>
+    <!--统一管理依赖的版本号 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.flyme</groupId>
+                <artifactId>flyme-common</artifactId>
+                <version>${flyme-common}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.flyme</groupId>
+                <artifactId>flyme-core</artifactId>
+                <version>${flyme-core}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava-version}</version>
+            </dependency>
+            <!-- Druid 数据连接池依赖 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid-version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
