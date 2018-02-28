@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis-plus:
-    typeAliasesPackage: com.flyme
+    type-aliases-package: com.flyme
     mapper-locations: classpath*:com/flyme/**/*Mapper.xml
     global-config:
       id-type: 3
