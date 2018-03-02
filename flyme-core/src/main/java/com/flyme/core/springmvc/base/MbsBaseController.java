@@ -1,19 +1,14 @@
 package com.flyme.core.springmvc.base;
 
-import com.flyme.common.utils.ObjectUtils;
-import com.flyme.core.mybatis.model.ApiJson;
+import com.flyme.common.base.ApiJson;
 import com.flyme.core.springmvc.binder.*;
-import com.flyme.core.springmvc.exception.ErrorInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -26,29 +21,6 @@ public class MbsBaseController {
     ApiJson j = new ApiJson();
     public static final Logger log = LoggerFactory.getLogger(MbsBaseController.class);
 
-    /**
-     * 判断是否为Ajax请求
-     */
-    public static boolean isAjaxRequest(HttpServletRequest request) {
-        String requestType = request.getHeader("X-Requested-With");
-        if (requestType != null && requestType.equals("XMLHttpRequest")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @ExceptionHandler(Exception.class)
-    @ResponseBody
-    private ErrorInfo exceptionHandler(Exception ex, HttpServletResponse response, HttpServletRequest request) throws Exception {
-        ErrorInfo errorInfo = new ErrorInfo(ex);
-        if (isAjaxRequest(request)) {
-            ex.printStackTrace();
-        } else {
-            ex.printStackTrace();
-        }
-        return errorInfo;
-    }
 
     /**
      * 后台接收Date转换
@@ -85,6 +57,7 @@ public class MbsBaseController {
             return null;
         }
     }
+
     /**
      * 重定向至地址 url
      */
@@ -94,7 +67,7 @@ public class MbsBaseController {
         return rto.toString();
     }
 
-    protected ApiJson renderString(Boolean result,String info) {
+    protected ApiJson renderString(Boolean result, String info) {
         if (result) {
             j.setAppInfo(info);
         } else {
@@ -102,6 +75,7 @@ public class MbsBaseController {
         }
         return j;
     }
+
     protected ApiJson renderObject(Object obj) {
 
         return j.setObject(obj);

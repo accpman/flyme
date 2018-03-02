@@ -3,9 +3,7 @@ package com.flyme.core.mybatis.service;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.flyme.common.base.EntityMap;
 import com.flyme.core.mybatis.base.SuperMapper;
-import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 

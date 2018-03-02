@@ -1,10 +1,8 @@
 spring:
-  datasource:
-    url: jdbc:mysql://122.114.154.81:3306/flyme?allowMultiQueries=true&characterEncoding=UTF-8
-    username: root
-    password: java_five
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
+  profiles:
+    #环境激活
+    active: dev
+#全局配置
 mybatis-plus:
     type-aliases-package: com.flyme
     mapper-locations: classpath*:com/flyme/**/*Mapper.xml
@@ -19,7 +17,6 @@ mybatis-plus:
       #逻辑删除配置（下面3个配置）
       logic-delete-value: 1
       logic-not-delete-value: 0
-      sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
     configuration:
       map-underscore-to-camel-case: false
       cache-enabled: false
@@ -27,6 +24,28 @@ mybatis-plus:
       call-setters-on-nulls: true
       lazy-loading-enabled: true
       aggressive-lazy-loading: false
-logging:
-  level: debug
+---
+spring:
+  #开发环境
+  profiles: dev
+  datasource:
+     url: jdbc:mysql://122.114.154.81:3306/flyme?allowMultiQueries=true&characterEncoding=UTF-8
+     username: root
+     password: java_five
+     driver-class-name: com.mysql.jdbc.Driver
+     type: com.alibaba.druid.pool.DruidDataSource
+server:
+    port: 8080
+---
+spring:
+  #生产环境
+  profiles: pro
+  datasource:
+     url: jdbc:mysql://122.114.154.81:3306/flyme?allowMultiQueries=true&characterEncoding=UTF-8
+     username: root
+     password: java_five
+     driver-class-name: com.mysql.jdbc.Driver
+     type: com.alibaba.druid.pool.DruidDataSource
+server:
+  port: 80
 

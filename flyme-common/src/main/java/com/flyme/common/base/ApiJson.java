@@ -1,10 +1,10 @@
-package com.flyme.core.mybatis.model;
+package com.flyme.common.base;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.flyme.common.utils.ObjectUtils;
-import com.flyme.core.mybatis.iview.AjaxView;
+import com.flyme.common.view.AjaxView;
 
 import java.io.Serializable;
 import java.util.Map;

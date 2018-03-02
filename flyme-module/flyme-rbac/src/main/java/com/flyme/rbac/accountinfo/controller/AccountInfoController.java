@@ -1,7 +1,7 @@
 package com.flyme.rbac.accountinfo.controller;
 
 
-import com.flyme.core.mybatis.model.ApiJson;
+import com.flyme.common.base.ApiJson;
 import com.flyme.core.springmvc.base.MbsBaseController;
 import com.flyme.rbac.accountinfo.pojo.AccountInfo;
 import com.flyme.rbac.accountinfo.service.IAccountInfoService;

@@ -1,6 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
-
-# IntelliJ project files
+#设置提交忽略文件
 .idea
 *.iml
 out
