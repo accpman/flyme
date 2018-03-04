@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * 用戶信息管理
+ * 用户管理
+ * @author 张亚斐
  */
 @RestController
 @RequestMapping("/accountinfo/")
@@ -22,12 +23,6 @@ public class AccountInfoController extends MbsBaseController {
     @Autowired
     private IAccountInfoService accountInfoService;
 
-
-    @PostMapping("insert")
-    public ApiJson insert(AccountInfo accountInfo) {
-        Boolean result = accountInfoService.insert(accountInfo);
-        return renderString(result,"添加成功");
-    }
 
     @PostMapping("update")
     public ApiJson update(AccountInfo accountInfo) {

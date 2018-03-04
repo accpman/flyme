@@ -4,7 +4,9 @@ import com.flyme.common.base.ApiJson;
 import com.flyme.core.springmvc.binder.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -14,13 +16,17 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 /**
- * 类描述：mybatis基础控制器
+ * @author :flyme
+ * @date : 2018/3/3 22:45
+ * @description :mybatis基础控制器
  */
+
 @Controller
 public class MbsBaseController {
     ApiJson j = new ApiJson();
     public static final Logger log = LoggerFactory.getLogger(MbsBaseController.class);
-
+    @Autowired
+    public  ApplicationContext applicationContext;
 
     /**
      * 后台接收Date转换

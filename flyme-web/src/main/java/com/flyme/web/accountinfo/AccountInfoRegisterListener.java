@@ -5,6 +5,9 @@ import com.flyme.core.mybatis.event.BeforQueryEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author flyme
+ */
 @Component
 public class AccountInfoRegisterListener {
     /**

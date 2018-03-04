@@ -148,7 +148,7 @@ public class AccountInfoTest {
     public void selectById() {
         Map<String, String> params = new HashMap<>();
         params.put("accountInfoId", "1");
-        ApiJson result = testRestTemplate.getForObject("/accountinfo/selectById?accountInfoId={accountInfoId}", ApiJson.class, params);
+        ApiJson result = testRestTemplate.postForObject("/api/account/reg",null, ApiJson.class, params);
         System.out.print("selectById:" + result);
     }
 

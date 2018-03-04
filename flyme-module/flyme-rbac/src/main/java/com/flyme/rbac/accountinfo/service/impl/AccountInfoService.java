@@ -8,6 +8,6 @@ import com.flyme.rbac.accountinfo.service.IAccountInfoService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AccountImplService extends BaseServiceImpl<AccountInfoMapper, AccountInfo> implements IAccountInfoService {
+public class AccountInfoService extends BaseServiceImpl<AccountInfoMapper, AccountInfo> implements IAccountInfoService {
 
 }
