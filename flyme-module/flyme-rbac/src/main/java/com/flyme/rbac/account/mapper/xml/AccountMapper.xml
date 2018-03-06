@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.flyme.rbac.account.mapper.AccountMapper">
     <!--数据表定义 -->
-    <sql id="t_name">t_u_account</sql>
-    <sql id="t_alias">t_u_account as a</sql>
+    <sql id="t_name">t_rbac_account</sql>
+    <sql id="t_alias">t_rbac_account as a</sql>
 
     <!--定义外键表 -->
     <sql id="join">

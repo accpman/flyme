@@ -1,4 +1,4 @@
-package com.flyme.rbac.account.pojo;
+package com.flyme.rbac.account.entity;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
@@ -6,11 +6,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.flyme.core.mybatis.base.AbstractEntity;
 
-
 /**
- * 系统账户表
+ * @Author flyme
+ * @Date 2018/3/6 14:44
+ * @Desc 系统账户表
  */
-@TableName("t_u_account")
+@TableName("t_rbac_account")
 @JsonInclude(Include.NON_NULL)
 public class Account extends AbstractEntity {
 

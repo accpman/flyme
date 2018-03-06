@@ -1,9 +1,8 @@
 package com.flyme.web.accountinfo;
 
 import com.flyme.common.base.ApiJson;
-import com.flyme.common.exception.BizException;
 import com.flyme.core.mybatis.event.BeforQueryEvent;
-import com.flyme.rbac.accountinfo.pojo.AccountInfo;
+import com.flyme.rbac.accountinfo.entity.AccountInfo;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.event.SmartApplicationListener;
 import org.springframework.stereotype.Component;

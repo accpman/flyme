@@ -1,4 +1,4 @@
-package com.flyme.rbac.accountinfo.pojo;
+package com.flyme.rbac.accountinfo.entity;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.flyme.core.mybatis.base.AbstractEntity;
 
 
-@TableName("t_u_account_info")
+@TableName("t_rbac_account_info")
 @JsonInclude(Include.NON_NULL)
 public class AccountInfo extends AbstractEntity {
     @TableId

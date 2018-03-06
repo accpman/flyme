@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.io.Serializable;
 
 /**
- * 实体类父类
+ * @Author Administrator
+ * @Date:2018/3/6 14:42
+ * @Desc: 实体类父类
  */
 @JsonInclude(Include.NON_NULL)
 @JsonIgnoreProperties(value = {"modifyUser"})
 public class AbstractEntity implements Serializable {
-
-    private static final long serialVersionUID = 1L;
     /**
      * 创建时间
      */

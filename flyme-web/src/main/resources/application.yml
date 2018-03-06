@@ -4,7 +4,7 @@ spring:
     active: dev
 #全局配置
 mybatis-plus:
-    type-aliases-package: com.flyme
+    typeAliasesPackage: com.flyme.**.entity
     mapper-locations: classpath*:com/flyme/**/*Mapper.xml
     global-config:
       id-type: 3

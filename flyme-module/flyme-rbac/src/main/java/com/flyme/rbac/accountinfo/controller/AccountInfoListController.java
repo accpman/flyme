@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.flyme.common.base.EntityMap;
 import com.flyme.core.mybatis.base.CriteriaQuery;
 import com.flyme.core.springmvc.base.MbsBaseController;
-import com.flyme.rbac.accountinfo.pojo.AccountInfo;
+import com.flyme.rbac.accountinfo.entity.AccountInfo;
 import com.flyme.rbac.accountinfo.service.IAccountInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

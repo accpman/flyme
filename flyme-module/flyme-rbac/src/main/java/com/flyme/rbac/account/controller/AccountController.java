@@ -3,7 +3,7 @@ package com.flyme.rbac.account.controller;
 
 import com.flyme.common.base.ApiJson;
 import com.flyme.core.springmvc.base.MbsBaseController;
-import com.flyme.rbac.account.pojo.Account;
+import com.flyme.rbac.account.entity.Account;
 import com.flyme.rbac.account.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
