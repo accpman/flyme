@@ -10,6 +10,12 @@ import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.flyme.common.exception.BizException;
+import com.flyme.common.utils.ObjectUtils;
+import com.flyme.core.springmvc.base.MbsBaseController;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.stereotype.Component;
@@ -22,19 +28,38 @@ import org.springframework.util.ClassUtils;
  * @Desc 代码生成器
  */
 @Component
-public class MpGenerator {
+public class GeneratorCode {
+    public static final Logger log = LoggerFactory.getLogger(GeneratorCode.class);
     @Autowired
     public DataSourceProperties dataSourceProperties;
 
-    public void init(String tableName) {
-        String path= ClassUtils.getDefaultClassLoader().getResource("").getPath();
-        System.out.print(path);
+    public void init(GeneratorConfig config) {
+        String tableName = config.getTableName();
+        Boolean baseModule = config.getBaseModule();
+        if (StringUtils.isEmpty(tableName)) {
+            log.error("请填写要生成的表名");
+            return;
+        }
+        String parentModule = tableName.substring(tableName.indexOf("_") + 1, tableName.indexOf("_", 2));
+        String moduleName = (tableName.substring(tableName.indexOf("_",2))).replace("_", "");
+        System.out.println(parentModule);
+        String tablePrefix = tableName.substring(0, tableName.indexOf("_", 2));
+        System.out.println(tableName);
+        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+        System.out.println(path);
+        String baseOutPath = path.substring(0, path.indexOf("target") - 1);
+        System.out.println(baseOutPath);
+        if (baseModule) {
+            baseOutPath = baseOutPath.substring(0, baseOutPath.lastIndexOf("/")) + "/flyme-module/" + "flyme-" + parentModule;
+            System.out.println(baseOutPath);
+        }
+        System.out.println(tablePrefix);
         AutoGenerator mpg = new AutoGenerator();
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir(path);
-        gc.setFileOverride(true);
+        gc.setOutputDir(baseOutPath + "/src/main/java");
+        gc.setFileOverride(false);
         //不需要ActiveRecord特性的请改为false
         gc.setActiveRecord(false);
         //XML 二级缓存
@@ -45,7 +70,7 @@ public class MpGenerator {
         gc.setBaseColumnList(false);
         gc.setKotlin(false);
         //是否生成 kotlin 代码
-        gc.setAuthor("flyme");
+        gc.setAuthor(config.getAuthor());
         mpg.setGlobalConfig(gc);
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
@@ -68,13 +93,13 @@ public class MpGenerator {
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         // 此处可以修改为您的表前缀
-        strategy.setTablePrefix("t_rbac_");
+        strategy.setTablePrefix(tablePrefix);
         // 表名生成策略(下划线转驼峰)
         strategy.setNaming(NamingStrategy.underline_to_camel);
         // 需要生成的表
         strategy.setInclude(tableName);
         // 自定义实体，公共字段
-        strategy.setSuperEntityColumns("createDate","modifyDate","modifyUser");
+        strategy.setSuperEntityColumns("createDate", "modifyDate", "modifyUser");
         // 自定义实体父类
         strategy.setSuperEntityClass("com.flyme.core.mybatis.base.AbstractEntity");
         // 自定义 mapper 父类
@@ -87,12 +112,13 @@ public class MpGenerator {
         strategy.setSuperControllerClass("com.flyme.core.springmvc.base.MbsBaseController");
         // 实体是否为构建者模型
         strategy.setEntityBuilderModel(true);
+        strategy.setControllerMappingHyphenStyle(true);
         mpg.setStrategy(strategy);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.flyme.rbac");
-        pc.setModuleName("account");
+        pc.setParent("com.flyme." + parentModule);
+        pc.setModuleName(moduleName);
         pc.setController("controller");
         mpg.setPackageInfo(pc);
         mpg.execute();

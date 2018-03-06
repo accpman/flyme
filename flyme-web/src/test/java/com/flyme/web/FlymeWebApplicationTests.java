@@ -3,7 +3,8 @@ package com.flyme.web;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.flyme.common.base.ApiJson;
 import com.flyme.common.base.EntityMap;
-import com.flyme.core.generator.MpGenerator;
+import com.flyme.core.generator.GeneratorCode;
+import com.flyme.core.generator.GeneratorConfig;
 import com.flyme.core.mybatis.base.CriteriaQuery;
 import com.flyme.rbac.account.entity.Account;
 import com.flyme.rbac.accountinfo.entity.AccountInfo;
@@ -31,7 +32,7 @@ public class FlymeWebApplicationTests {
     @Autowired
     private TestRestTemplate testRestTemplate;
     @Autowired
-    private MpGenerator mpGenerator;
+    private GeneratorCode generatorCode;
 
 
     /**
@@ -293,11 +294,14 @@ public class FlymeWebApplicationTests {
     }
 
     /**
-     * 测试代码生成
+     * 代码生成器
      */
     @Test
     public void generator() {
-        mpGenerator.init("t_rbac_account");
+        GeneratorConfig config = new GeneratorConfig();
+        config.setBaseModule(true);
+        config.setTableName("t_rbac_role");
+        generatorCode.init(config);
     }
 
 }
