@@ -21,15 +21,17 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ClassUtils;
 
+import java.util.Objects;
+
 
 /**
- * @Author flyme
- * @Date 2018/3/6 14:44
- * @Desc 代码生成器
+ * @author  flyme
+ * @date   2018/3/6 14:44
+ * @desc:  代码生成器生成模板配置
  */
 @Component
 public class GeneratorCode {
-    public static final Logger log = LoggerFactory.getLogger(GeneratorCode.class);
+    private static final Logger log = LoggerFactory.getLogger(GeneratorCode.class);
     @Autowired
     public DataSourceProperties dataSourceProperties;
 
@@ -45,7 +47,7 @@ public class GeneratorCode {
         System.out.println(parentModule);
         String tablePrefix = tableName.substring(0, tableName.indexOf("_", 2));
         System.out.println(tableName);
-        String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+        String path = Objects.requireNonNull(Objects.requireNonNull(ClassUtils.getDefaultClassLoader()).getResource("")).getPath();
         System.out.println(path);
         String baseOutPath = path.substring(0, path.indexOf("target") - 1);
         System.out.println(baseOutPath);

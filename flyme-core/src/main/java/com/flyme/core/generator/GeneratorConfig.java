@@ -1,9 +1,9 @@
 package com.flyme.core.generator;
 
 /**
- * @Author: flyme
- * @Date: 2018/3/6 22:30
- * @Desc: 代码生成配置
+ * @author: flyme
+ * @date: 2018/3/6 22:30
+ * @desc: 代码生成器自定义配置参数
  */
 public class GeneratorConfig {
     /**
@@ -17,7 +17,7 @@ public class GeneratorConfig {
     /**
      * 生成表名称
      */
-    private  String tableName;
+    private String tableName;
 
     public String getAuthor() {
         return author;
