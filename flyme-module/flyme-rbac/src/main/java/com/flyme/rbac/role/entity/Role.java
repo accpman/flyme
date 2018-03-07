@@ -4,12 +4,9 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.flyme.core.mybatis.base.AbstractEntity;
 
 /**
- * <p>
- * 角色表
- * </p>
- *
- * @author flyme
- * @since 2018-03-06
+ * @author: flyme
+ * @date: 2018/3/7 9:39
+ * @desc: 角色表
  */
 @TableName("t_rbac_role")
 public class Role extends AbstractEntity {
@@ -49,6 +46,7 @@ public class Role extends AbstractEntity {
         this.roleId = roleId;
         return this;
     }
+
     public String getRoleName() {
         return roleName;
     }
@@ -57,6 +55,7 @@ public class Role extends AbstractEntity {
         this.roleName = roleName;
         return this;
     }
+
     public String getRoleCode() {
         return roleCode;
     }
@@ -65,6 +64,7 @@ public class Role extends AbstractEntity {
         this.roleCode = roleCode;
         return this;
     }
+
     public Integer getIsSuper() {
         return isSuper;
     }
@@ -73,6 +73,7 @@ public class Role extends AbstractEntity {
         this.isSuper = isSuper;
         return this;
     }
+
     public String getRemark() {
         return remark;
     }
@@ -84,12 +85,6 @@ public class Role extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "Role{" +
-        "roleId=" + roleId +
-        ", roleName=" + roleName +
-        ", roleCode=" + roleCode +
-        ", isSuper=" + isSuper +
-        ", remark=" + remark +
-        "}";
+        return "Role{" + "roleId=" + roleId + ", roleName=" + roleName + ", roleCode=" + roleCode + ", isSuper=" + isSuper + ", remark=" + remark + "}";
     }
 }
